@@ -9,6 +9,9 @@ public class MinumunValue {
         System.out.println();
     }
     public static int minimumValue(int[] arr){
+        if (arr == null || arr.length ==0){
+            throw new IllegalArgumentException("Invalid input");
+        }
         int min = arr[0];
         for (int i = 1; i < arr.length;i++){
             if(arr[i] < min){
