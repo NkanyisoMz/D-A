@@ -1,4 +1,4 @@
-//Delete first node of the linkedlist
+//Delete last node on single linked list
 
 
 public class SingleLinkedList {
@@ -88,6 +88,21 @@ public class SingleLinkedList {
         return temp;
     }
 
+    public ListNode deleteLast(){
+        if (head==null || head.next == null){
+            return null;
+        }
+        ListNode current = head;
+        ListNode previous = null;
+
+        while (current.next !=null){
+            previous = current;
+            current = current.next;
+        }
+        previous.next = null; //break the link
+        return current;
+    }
+
     public static void main(String[] args) {
         SingleLinkedList sll = new SingleLinkedList();
 
@@ -109,9 +124,9 @@ public class SingleLinkedList {
 
 
 
-        sll.deleteFirst();
+        sll.deleteLast();
         System.out.println();
-        System.out.println("After first node is deleted");
+        System.out.println("After last node is deleted");
         sll.display();
     }
 }
