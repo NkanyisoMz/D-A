@@ -1,4 +1,4 @@
-//Rervese linkedlist
+//Reverse linkedlist
 
 
 public class SingleLinkedList {
