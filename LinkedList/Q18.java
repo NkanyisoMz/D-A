@@ -1,5 +1,4 @@
-//Find start of the loop in a single linked list, also called Floyd cycle
-//detection algorithm
+//remove loop in linked list
 
 
 public class SingleLinkedList {
@@ -289,6 +288,32 @@ public class SingleLinkedList {
         return temp;
     }
 
+    public void removeLoop(){
+        ListNode fastPtr = head;
+        ListNode slowPtr = head;
+
+        while (fastPtr != null && fastPtr.next != null){
+            fastPtr = fastPtr.next.next;
+            slowPtr = slowPtr.next;
+
+            if (slowPtr == fastPtr) {
+                removeLoop(slowPtr);
+                return;
+            }
+
+        }
+    }
+
+    public void removeLoop(ListNode slowPtr){
+        ListNode temp = head;
+        while (temp.next != slowPtr.next){
+            temp = temp.next;
+            slowPtr = slowPtr.next;
+        }
+        slowPtr.next = null;
+    }
+
+
 
     public static void main(String[] args) {
         SingleLinkedList sll = new SingleLinkedList();
@@ -318,8 +343,9 @@ public class SingleLinkedList {
         System.out.print("Looped list returns from containsLoop function: ");
         System.out.println(sllLooped.containsLoop());
         System.out.println(sllLooped.startNodeInALoop().data);
+        sllLooped.removeLoop();
+        sllLooped.display();
 
     }
 
 }
-
